@@ -8,6 +8,7 @@ var database =require("./config/database");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var empleadosRouter = require('./routes/empleados.router');
 
 var app = express();
 
@@ -20,12 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Mongo Connection
 database.mogoConnect();
 
-
 //Router
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/empleados',empleadosRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
