@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 var database = require("./config/database");
-
-
-var empleadosRouter = require('./routes/empleados.router');
+var usuarioRouter = require('./routes/usuario.router');
+var auth = require('./auth/main_auth')
 var radiosRouter = require('./routes/radios.router');
 
 var app = express();
@@ -20,9 +20,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Mongo Connection
 database.mogoConnect();
 
+app.use(auth);
+
 //Router
-app.use('/empleados', empleadosRouter);
+app.use('/usuarios', usuarioRouter)
+
 app.use('/radios', radiosRouter)
+
 
 
 
