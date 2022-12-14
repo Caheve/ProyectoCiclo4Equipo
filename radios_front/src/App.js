@@ -1,16 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
 import Login from './components/login/Login';
+import Menu from './components/navbar/navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Container>
+      <Menu/>
+        <Container>  
           <Login/>
         </Container>
-      </header>
     </div>
   );
 }
